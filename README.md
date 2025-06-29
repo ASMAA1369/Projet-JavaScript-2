@@ -74,7 +74,7 @@ console.log(estPremier(18)); // false
 console.log(suiteFibonacci(7)); // [0, 1, 1, 2, 3, 5, 8]
 
 ## Comment exécuter
-Vueillez Ouvrir le fichier HTML dans un navigateur pour voir les résultats affichés.
+Vueillez cliquer sur ce lien pour ouvrir la page sur un navigateur afin de voir les résultats affichés. 
 
 ## Auteur
 ASMAA1369
