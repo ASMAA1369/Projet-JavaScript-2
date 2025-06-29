@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet JavaScript - Fonctions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      color: #0073e6;
+    }
+    section {
+      background: white;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+    pre {
+      background: #eee;
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Résultats des Fonctions JavaScript</h1>
+
+  <section>
+    <h2>1. Inverser une chaîne</h2>
+    <pre id="res-inverser"></pre>
+  </section>
+
+  <section>
+    <h2>2. Compter les caractères</h2>
+    <pre id="res-compter"></pre>
+  </section>
+
+  <section>
+    <h2>3. Majuscule sur chaque mot</h2>
+    <pre id="res-majuscule"></pre>
+  </section>
+
+  <section>
+    <h2>4 & 5. Maximum et Minimum</h2>
+    <pre id="res-maxmin"></pre>
+  </section>
+
+  <section>
+    <h2>6. Somme des éléments</h2>
+    <pre id="res-somme"></pre>
+  </section>
+
+  <section>
+    <h2>7. Filtrer un tableau</h2>
+    <pre id="res-filtrer"></pre>
+  </section>
+
+  <section>
+    <h2>8. Factorielle</h2>
+    <pre id="res-factorielle"></pre>
+  </section>
+
+  <section>
+    <h2>9. Vérification de nombre premier</h2>
+    <pre id="res-premier"></pre>
+  </section>
+
+  <section>
+    <h2>10. Suite de Fibonacci</h2>
+    <pre id="res-fibonacci"></pre>
+  </section>
+
+  <script>
+    // Fonctions
+    function inverserChaine(str) {
+      return str.split('').reverse().join('');
+    }
+
+    function compterCaracteres(str) {
+      return str.length;
+    }
+
+    function mettreMajusculePremiereLettre(str) {
+      return str
+        .split(' ')
+        .map(mot => mot.charAt(0).toUpperCase() + mot.slice(1))
+        .join(' ');
+    }
+
+    function trouverMax(tab) {
+      return Math.max(...tab);
+    }
+
+    function trouverMin(tab) {
+      return Math.min(...tab);
+    }
+
+    function sommeTableau(tab) {
+      return tab.reduce((acc, val) => acc + val, 0);
+    }
+
+    function filtrerTableau(tab, condition) {
+      return tab.filter(condition);
+    }
+
+    function factorielle(n) {
+      if (n < 0) return undefined;
+      if (n === 0 || n === 1) return 1;
+      let resultat = 1;
+      for (let i = 2; i <= n; i++) {
+        resultat *= i;
+      }
+      return resultat;
+    }
+
+    function estPremier(n) {
+      if (n <= 1) return false;
+      if (n <= 3) return true;
+      if (n % 2 === 0 || n % 3 === 0) return false;
+      for (let i = 5; i * i <= n; i += 6) {
+        if (n % i === 0 || n % (i + 2) === 0) return false;
+      }
+      return true;
+    }
+
+    function suiteFibonacci(n) {
+      if (n <= 0) return [];
+      if (n === 1) return [0];
+      let fib = [0, 1];
+      while (fib.length < n) {
+        fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+      }
+      return fib;
+    }
+
+    // Exemples
+    const exempleTexte = 'bonjour tout le monde';
+    const exempleTab = [3, 9, 2, 15, 6];
+
+    // Affichage
+    document.getElementById("res-inverser").textContent = inverserChaine(exempleTexte);
+    document.getElementById("res-compter").textContent = `Longueur : ${compterCaracteres(exempleTexte)}`;
+    document.getElementById("res-majuscule").textContent = mettreMajusculePremiereLettre(exempleTexte);
+    document.getElementById("res-maxmin").textContent = `Max : ${trouverMax(exempleTab)}\nMin : ${trouverMin(exempleTab)}`;
+    document.getElementById("res-somme").textContent = `Somme : ${sommeTableau(exempleTab)}`;
+    document.getElementById("res-filtrer").textContent = `Supérieurs à 5 : ${filtrerTableau(exempleTab, x => x > 5).join(', ')}`;
+    document.getElementById("res-factorielle").textContent = `5! = ${factorielle(5)}`;
+    document.getElementById("res-premier").textContent = `17 est premier ? ${estPremier(17)}\n18 est premier ? ${estPremier(18)}`;
+    document.getElementById("res-fibonacci").textContent = `Fibonacci (7 termes) : ${suiteFibonacci(7).join(', ')}`;
+  </script>
+</body>
+</html>
